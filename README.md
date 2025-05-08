@@ -1,10 +1,10 @@
-# 🚀 Azure AKS Helm Deployment Example
+## 🚀 Azure AKS Helm Deployment Example
 
 This project demonstrates how to deploy a simple NGINX application to **Azure Kubernetes Service (AKS)** using **Helm** — fully configured to run in **GitHub Codespaces**.
 
 ---
 
-## 📁 Project Structure
+### 📁 Project Structure
 
 ```
 azure-aks-deploy/
@@ -23,7 +23,7 @@ azure-aks-deploy/
 
 ---
 
-## 🧰 Tools Installed Automatically
+### 🧰 Tools Installed Automatically
 
 When your Codespace starts, the following tools are auto-installed:
 
@@ -34,7 +34,7 @@ When your Codespace starts, the following tools are auto-installed:
 
 ---
 
-## ✅ Prerequisites
+### ✅ Prerequisites
 
 Before using this project:
 
@@ -46,7 +46,7 @@ Before using this project:
 
 ---
 
-## 🚀 How to Deploy
+### 🚀 How to Deploy
 
 1. **Open the repo in GitHub Codespaces**
    > Tools are installed automatically via `.devcontainer` setup
@@ -79,7 +79,7 @@ Before using this project:
 
 ---
 
-## 📦 Helm Chart Overview
+### 📦 Helm Chart Overview
 
 | File | Purpose |
 |------|---------|
@@ -90,7 +90,7 @@ Before using this project:
 
 ---
 
-## 🧹 Cleanup
+### 🧹 Cleanup
 
 To uninstall the app:
 ```bash
@@ -104,7 +104,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ---
 
-## 📌 Notes
+### 📌 Notes
 
 - Helm allows parameterized, repeatable Kubernetes deployments.
 - GitHub Codespaces makes this fully portable — zero local setup required.
@@ -112,12 +112,5 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ---
 
-## 📸 Screenshot (Optional)
-
-> _Add a screenshot here of the NGINX welcome page if desired._
-
----
-
-## 🧠 Author
-
-Built for AKS deployment demonstrations with GitHub Codespaces, Helm, and Kubernetes 💙
+### ✍️ Author: *Georges Bou Ghantous*
+*Built for AKS deployment demonstrations with GitHub Codespaces, Helm, and Kubernetes 💙*
