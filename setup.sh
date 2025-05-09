@@ -24,4 +24,14 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 # Install jq
 sudo apt-get install -y jq
 
-echo "✅ Tools installed: kubectl, az, helm, jq"
+# Log in and register the AKS provider
+echo "🔐 Logging into Azure..."
+az login --use-device-code
+
+echo "🔗 Registering Microsoft.ContainerService provider..."
+az provider register --namespace Microsoft.ContainerService
+
+echo "⏳ Waiting for provider registration..."
+az provider show --namespace Microsoft.ContainerService --query "registrationState"
+
+echo "✅ Tools installed and provider registered: kubectl, az, helm, jq"

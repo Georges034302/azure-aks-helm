@@ -1,37 +1,33 @@
 ## 🚀 Azure AKS Helm Deployment Example
 
-This project demonstrates how to deploy a simple NGINX application to **Azure Kubernetes Service (AKS)** using **Helm** — fully configured to run in **GitHub Codespaces**.
+This project demonstrates how to deploy a simple NGINX application to **Azure Kubernetes Service (AKS)** using **Helm**.
 
 ---
 
 ### 📁 Project Structure
 
 ```
-azure-aks-deploy/
-├── setup.sh                # Installs kubectl, Helm, Azure CLI, and jq
-├── deploy.sh               # Connects to AKS and deploys the Helm chart
-├── README
-├── nginx-helm/             # Helm chart for deploying NGINX
+azure-aks-helm/
+├── nginx-helm/           # Helm chart for NGINX or frontend
 │   ├── Chart.yaml
 │   ├── values.yaml
 │   └── templates/
 │       ├── deployment.yaml
 │       └── service.yaml
-└── .devcontainer/          # GitHub Codespaces setup
-    ├── devcontainer.json
-    └── Dockerfile
+├── setup.sh              # Installs kubectl, Helm, Azure CLI
+├── deploy.sh             # Creates AKS, resource group, deploys Helm
+├── cleanup.sh            # Removes Helm release, AKS, and resource group
+└── README.md
 ```
 
 ---
 
-### 🧰 Tools Installed Automatically
-
-When your Codespace starts, the following tools are auto-installed:
-
-- `kubectl` – Kubernetes CLI
-- `helm` – Helm 3 package manager
-- `az` – Azure CLI
-- `jq` – JSON processor (used in automation)
+### 🧰 Stack Overview
+- Cloud: Azure Kubernetes Service (AKS)
+- Container Orchestration: Kubernetes
+- Deployment Tool: Helm 3
+- App Example: NGINX served via LoadBalancer
+- CLI Tools: az, kubectl, helm
 
 ---
 
@@ -49,35 +45,31 @@ Before using this project:
 
 ### 🚀 How to Deploy
 
-1. **Open the repo in GitHub Codespaces**
-   > Tools are installed automatically via `.devcontainer` setup
-
-2. **Login to Azure**
-   ```bash
-   az login --use-device-code
+1. **Install dependencies**
+   ```
+   chmod +x setup.sh
+   ./setup.sh
    ```
 
-3. **Set AKS cluster details (edit in `deploy.sh`):**
-   ```bash
-   CLUSTER_NAME="myAKSCluster"
-   RESOURCE_GROUP="myResourceGroup"
+2. **Run the deployment**
    ```
-
-4. **Deploy the app**
-   ```bash
+   chmod +x deploy.sh
    ./deploy.sh
    ```
+---
+### ✅ Example Output:
+🌐 Waiting for external IP on service 'nginx-app-nginx'...
+NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+nginx-app-nginx     LoadBalancer   10.0.25.145    20.120.40.10    80:32000/TCP   2m
 
-5. **Get the External IP**
-   ```bash
-   kubectl get svc
-   ```
 
-6. **Open in your browser**
-   ```
-   http://<EXTERNAL-IP>
-   ```
+🌐 Use the EXTERNAL-IP in the web-browser 
 
+**✅Extract the EXTERNAL_IP to the bash-terminal**
+```
+EXTERNAL_IP=$(kubectl get svc nginx-app-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo "$EXTERNAL_IP"
+```
 ---
 
 ### 📦 Helm Chart Overview
@@ -93,15 +85,11 @@ Before using this project:
 
 ### 🧹 Cleanup
 
-To uninstall the app:
-```bash
-helm uninstall nginx-app
-```
-
-To delete your AKS cluster (optional):
-```bash
-az group delete --name myResourceGroup --yes --no-wait
-```
+To uninstall the app and delete Azure resources:
+   ```
+   chmod +x cleanup.sh
+   ./cleanup.sh
+   ```
 
 ---
 
