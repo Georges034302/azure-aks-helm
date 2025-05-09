@@ -10,6 +10,7 @@ This project demonstrates how to deploy a simple NGINX application to **Azure Ku
 azure-aks-deploy/
 ├── setup.sh                # Installs kubectl, Helm, Azure CLI, and jq
 ├── deploy.sh               # Connects to AKS and deploys the Helm chart
+├── README
 ├── nginx-helm/             # Helm chart for deploying NGINX
 │   ├── Chart.yaml
 │   ├── values.yaml
