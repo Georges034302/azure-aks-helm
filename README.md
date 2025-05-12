@@ -58,8 +58,8 @@ Before using this project:
    ```
 ---
 ### ✅ Example Output:
-🌐 Waiting for external IP on service 'nginx-app-nginx'...
-NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+🌐 Waiting for external IP on service 'nginx-app-nginx'...\
+NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE\
 nginx-app-nginx     LoadBalancer   10.0.25.145    20.120.40.10    80:32000/TCP   2m
 
 
